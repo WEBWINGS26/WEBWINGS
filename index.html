@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WEBWINGS</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:url('background.jpg') no-repeat center center/cover;
+color:white;
+position:relative;
+overflow-x:hidden;
+}
+
+.overlay{
+background:rgba(0,0,0,0.65);
+min-height:100vh;
+}
+
+.center{
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+.logo-img{
+width:190px;
+height:190px;
+border-radius:50%;
+object-fit:cover;
+
+animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo{
+
+0%{ transform: translateY(0px); }
+
+50%{ transform: translateY(-15px); }
+
+100%{ transform: translateY(0px); }
+
+}
+.enter-btn{
+margin-top:25px;
+padding:12px 35px;
+background:white;
+color:black;
+border:none;
+cursor:pointer;
+border-radius:5px;
+}
+
+nav{
+display:flex;
+justify-content:center;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(12px);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+nav button{
+background:none;
+border:none;
+color:white;
+padding:15px 25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+nav button:hover{
+background:rgba(255,255,255,0.2);
+}
+
+.section{
+display:none;
+padding:50px 20px;
+opacity:0;
+transform:translateY(30px);
+transition:all 0.5s ease;
+}
+#sample{
+min-height:70vh;
+}
+.active{
+display:block;
+opacity:1;
+transform:translateY(0);
+}
+
+.glass{
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:15px;
+max-width:1000px;
+margin:30px auto;
+}
+
+.hero h1{
+font-size:38px;
+text-shadow:0 0 10px rgba(255,255,255,0.6),
+0 0 20px rgba(255,255,255,0.4);
+}
+
+.hero p{
+font-size:18px;
+}
+
+.home-buttons{
+margin-top:25px;
+}
+
+.btn{
+display:inline-block;
+padding:12px 25px;
+background:rgba(255,255,255,0.2);
+color:#fff;
+text-decoration:none;
+border-radius:30px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.4);
+margin-right:15px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:rgba(255,255,255,0.4);
+}
+
+.btn-outline{
+background:transparent;
+border:1px solid #fff;
+}
+
+.gallery{
+display:none;
+margin-top:20px;
+text-align:center;
+}
+
+.gallery img{
+width:220px;
+margin:10px;
+border-radius:12px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:5px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:rgba(0,0,0,0.85);
+margin-top:40px;
+font-size:14px;
+}
+.counter-wrapper{
+display:flex;
+justify-content:space-around;
+flex-wrap:wrap;
+margin-top:20px;
+text-align:center;
+}
+
+.counter-box{
+margin:15px;
+}
+
+.counter-box h1{
+font-size:45px;
+margin:0;
+color:#fff;
+}
+
+.counter-box p{
+margin-top:8px;
+font-size:16px;
+}
+nav button.active-nav{
+background:rgba(255,255,255,0.3);
+border-bottom:2px solid white;
+}
+.close-btn{
+display:block;
+margin:10px auto 20px;
+padding:8px 20px;
+border:none;
+background:#ff4d4d;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-size:14px;
+}
+
+.close-btn:hover{
+background:#ff0000;
+}
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+}
+/* IMAGE PREVIEW LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:2000;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.lightbox span{
+position:absolute;
+top:20px;
+right:35px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+/* Scroll Reveal Animation */
+
+.reveal{
+opacity:0;
+transform: translateY(60px);
+transition: all 0.8s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform: translateY(0);
+}
+.fa-instagram{
+color:#E1306C;
+margin-right:6px;
+}
+</style>
+</head>
+
+
+<body>
+<div id="particles-js"></div>
+<div class="overlay">
+
+<!-- LANDING PAGE -->
+<div id="landing" class="center">
+<img src="logo.png" class="logo-img">
+<h1 style="font-size:55px;margin-top:20px;">WEBWINGS</h1>
+<button class="enter-btn" onclick="enterSite()">Enter Website</button>
+</div>
+
+<!-- MAIN WEBSITE -->
+<div id="mainSite" style="display:none;">
+
+<nav>
+<button class="active-nav" onclick="showSection('home', this)">HOME</button>
+<button onclick="showSection('about',this)">ABOUT US</button>
+<button onclick="showSection('sample',this)">SAMPLE WORK</button>
+<button onclick="showSection('contact',this)">CONTACT US</button>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="section active">
+
+<div class="glass hero reveal">
+<h1>Design That Makes Your Brand Fly</h1>
+<p>We create professional Logos, Business Cards and Affordable Websites to give your brand a strong identity.</p>
+<div class="home-buttons">
+<a href="https://wa.me/918697078330" target="_blank" class="btn">
+🚀 Start Your Project
+</a>
+
+<a href="tel:+918697078330" class="btn btn-outline">
+📞 Call Now
+</a>
+<a href="https://instagram.com/webwings26" target="_blank" class="btn">
+<i class="fa-brands fa-instagram"></i> @webwings26
+</a>
+</div>
+</div>
+
+<div class="glass reveal">
+<h2>Welcome to WEBWINGS</h2>
+<p>WEBWINGS is a creative design service where ideas turn into powerful brand identity.</p>
+<p>From Logo Design to Business Cards and Budget-Friendly Websites — we help businesses grow with smart and modern designs.</p>
+</div>
+
+<div class="glass reveal">
+<h2>What We Offer</h2>
+<p>🎨 Logo Design – Unique and modern logos that represent your brand perfectly.</p>
+<p>💳 Business Card Design – Professional and print-ready designs.</p>
+<p>🌐 Website Design (Low Budget) – Clean, responsive and fast websites.</p>
+<p>🖌️ Custom Design Works – Posters, Banners, Social Media Designs and more.</p>
+</div>
+
+<div class="glass reveal">
+<h2>Why Choose WEBWINGS?</h2>
+<p>🚀 Fast Delivery</p>
+<p>💰 Affordable Pricing</p>
+<p>🎯 Client-Focused Work</p>
+<p>📱 100% Mobile Friendly Website</p>
+<p>💬 Friendly & Clear Communication</p>
+</div>
+<!-- 🔥 COUNTER SECTION ADDED HERE -->
+<div class="glass reveal">
+<h2 style="text-align:center;">Our Achievements</h2>
+
+<div class="counter-wrapper">
+
+<div class="counter-box">
+<h1 class="counter" data-target="50">0</h1>
+<p>Designs Created</p>
+</div>
+
+<div class="counter-box">
+<h1 class="counter" data-target="25">0</h1>
+<p>Happy Clients</p>
+</div>
+
+<div class="counter-box">
+<h1 class="counter" data-target="100">0</h1>
+<p>Client Satisfaction</p>
+</div>
+
+</div>
+</div>
+<div class="glass reveal">
+<h2>Ready to give your brand a professional look?</h2>
+<p>👉 Let WEBWINGS handle your design needs today.</p>
+</div>
+
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+<div class="glass reveal">
+<h2>Who We Are</h2>
+<p>WEBWINGS is a creative design team providing affordable branding solutions.
+We work with startups, small businesses and individuals who want quality design at reasonable prices.</p>
+
+<h2>Our Mission</h2>
+<p>To provide professional design services at budget-friendly cost so every business can build a strong brand identity.</p>
+
+<h2>Our Vision</h2>
+<p>To become a trusted creative brand known for quality, simplicity and reliability.</p>
+
+<h2>Our Core Values</h2>
+<p>✔ Creativity</p>
+<p>✔ Commitment</p>
+<p>✔ Client Satisfaction</p>
+<p>✔ Honest Pricing</p>
+</div>
+</div>
+
+<!-- SAMPLE WORK -->
+<div id="sample" class="section">
+<div class="glass reveal">
+<h2>Our Recent Projects</h2>
+
+<button class="btn" onclick="toggleGallery('logoGallery')">Logo Design</button>
+<button class="btn" onclick="toggleGallery('graphicGallery')">Graphic Design</button>
+
+<div id="logoGallery" class="gallery">
+<img src="logo1.jpg" onclick="openLightbox(this.src)">
+<img src="logo2.jpg" onclick="openLightbox(this.src)">
+<img src="logo3.jpg" onclick="openLightbox(this.src)">
+<img src="logo4.jpg" onclick="openLightbox(this.src)">
+<img src="logo5.jpg" onclick="openLightbox(this.src)">
+</div>
+
+<div id="graphicGallery" class="gallery">
+<img src="card1.jpg" onclick="openLightbox(this.src)">
+<img src="card2.jpg" onclick="openLightbox(this.src)">
+<img src="card3.jpg" onclick="openLightbox(this.src)">
+<img src="card4.jpg" onclick="openLightbox(this.src)">
+<img src="poster1.jpg" onclick="openLightbox(this.src)">
+<img src="poster2.jpg" onclick="openLightbox(this.src)">
+</div>
+
+</div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="section">
+<div class="glass reveal">
+<h2>Let’s Work Together</h2>
+<p>Have an idea or project in mind? Contact us today and let’s make it happen.</p>
+
+<p>📧 Email: webwings26@gmail.com</p>
+<p>📞 Phone: 8697078330</p>
+<p>📍 Location: Kolkata, India</p>
+<p>
+<i class="fa-brands fa-instagram"></i> 
+Instagram: 
+<a href="https://instagram.com/webwings26" target="_blank" style="color:white;">
+@webwings26
+</a>
+</p>
+<hr style="margin:25px 0;">
+
+<h3>Send Us Your Project Details</h3>
+
+<form id="contactForm">
+<input type="text" id="name" placeholder="Full Name" required>
+<input type="email" id="email" placeholder="Email Address" required>
+<input type="text" id="phone" placeholder="Phone Number" required>
+<textarea id="message" placeholder="Project Details" rows="5" required></textarea>
+<button type="submit" class="btn" style="background:white;color:black;">Send Message</button>
+</form>
+
+</div>
+</div>
+
+<footer>
+© 2026 WEBWINGS. All Rights Reserved.<br>
+Designed & Developed by WEBWINGS
+</footer>
+
+</div>
+</div>
+
+<!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<script>
+function enterSite(){
+document.getElementById("landing").style.display="none";
+document.getElementById("mainSite").style.display="block";
+}
+
+function showSection(id, btn){
+
+document.querySelectorAll('.section').forEach(sec=>{
+sec.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+
+document.querySelectorAll('nav button').forEach(b=>{
+b.classList.remove('active-nav');
+});
+
+if(btn){
+btn.classList.add('active-nav');
+}else{
+document.querySelectorAll("nav button").forEach(b=>{
+if(b.getAttribute("onclick").includes(id)){
+b.classList.add("active-nav");
+}
+});
+}
+
+window.location.hash = id;
+
+}
+function toggleGallery(id){
+document.querySelectorAll('.gallery').forEach(g=>g.style.display="none");
+document.getElementById(id).style.display="block";
+}
+
+emailjs.init("21Hs3Q5PmLgSQp-8v");
+
+document.getElementById("contactForm").addEventListener("submit", function(e){
+e.preventDefault();
+
+emailjs.send("service_h22bqdh", "template_xkay5h6", {
+from_name: document.getElementById("name").value,
+from_email: document.getElementById("email").value,
+phone: document.getElementById("phone").value,
+message: document.getElementById("message").value
+})
+.then(function(){
+alert("✅ Message Sent Successfully!");
+document.getElementById("contactForm").reset();
+})
+.catch(function(error){
+alert("❌ Failed to Send!");
+console.log(error);
+});
+});
+
+/* 🔥 COUNTER ANIMATION */
+let counterStarted = false;
+
+window.addEventListener("scroll", function(){
+
+const section = document.querySelector(".counter-wrapper");
+const sectionTop = section.getBoundingClientRect().top;
+
+if(sectionTop < window.innerHeight && !counterStarted){
+
+counterStarted = true;
+
+const counters = document.querySelectorAll('.counter');
+
+counters.forEach(counter => {
+
+counter.innerText = '0';
+
+const updateCounter = () => {
+
+const target = +counter.getAttribute('data-target');
+const c = +counter.innerText;
+const increment = target / 100;
+
+if(c < target){
+
+counter.innerText = `${Math.ceil(c + increment)}`;
+setTimeout(updateCounter, 20);
+
+}else{
+
+counter.innerText = target + "+";
+
+}
+
+};
+
+updateCounter();
+
+});
+
+}
+
+});
+/* BACK / FORWARD BUTTON SUPPORT */
+window.addEventListener("hashchange", function(){
+
+let hash = window.location.hash.replace("#","");
+
+if(hash){
+showSection(hash);
+}
+
+});
+/* LIGHTBOX IMAGE PREVIEW */
+
+function openLightbox(src){
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src = src;
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display="none";
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 60 },
+    "color": { "value": "#ffffff" },
+    "shape": { "type": "circle" },
+    "opacity": { "value": 0.5 },
+    "size": { "value": 3 },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff"
+    },
+    "move": { "speed": 2 }
+  }
+});
+/* SCROLL REVEAL ANIMATION */
+
+window.addEventListener("scroll", reveal);
+
+function reveal(){
+
+var reveals = document.querySelectorAll(".reveal");
+
+for(var i = 0; i < reveals.length; i++){
+
+var windowHeight = window.innerHeight;
+var elementTop = reveals[i].getBoundingClientRect().top;
+var elementVisible = 100;
+
+if(elementTop < windowHeight - elementVisible){
+reveals[i].classList.add("active");
+}
+
+}
+
+}
+</script>
+<div id="lightbox" class="lightbox">
+<span onclick="closeLightbox()">×</span>
+<img id="lightbox-img">
+</div>
+</body>
+</html>
