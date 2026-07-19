@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | WebWings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
+    </style>
+</head>
+<body class="text-white">
+
+    <main class="pt-20 px-6 max-w-5xl mx-auto pb-20">
+        <h2 class="text-5xl font-bold text-center mb-12">Get In Touch</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Contact Form -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 space-y-4">
+                <h3 class="text-2xl font-bold text-blue-400 mb-4">Start a Project</h3>
+                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none">
+                <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none">
+                <textarea name="message" placeholder="Project Details" rows="4" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none"></textarea>
+                <button type="submit" class="w-full bg-blue-600 py-3 rounded-lg font-bold hover:bg-blue-500 transition">Send Request</button>
+            </form>
+
+            <!-- Details Section -->
+            <div class="space-y-6">
+                <!-- Info Section -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 space-y-3">
+                    <p><i class="fas fa-envelope text-blue-400 mr-2"></i> webwings26@gmail.com</p>
+                    <p><i class="fas fa-phone text-blue-400 mr-2"></i> +91 86970 78330 / +91 98307 38860</p>
+                    <p><i class="fab fa-instagram text-blue-400 mr-2"></i> @webwings26</p>
+                </div>
+
+                <!-- WhatsApp Section -->
+                <div class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 text-center">
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">Chat with us</h3>
+                    <a href="https://wa.me/919830738860" target="_blank" class="text-6xl text-green-500 hover:scale-110 transition-transform block">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                
+                <!-- QR Section -->
+                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 text-center">
+                    <h3 class="text-xl font-bold text-blue-400 mb-4">Google Review</h3>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/7yz33Eb4VwA2Se7J8&color=1e3a8a" alt="QR" class="bg-white p-2 rounded-lg mx-auto">
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us & Social -->
+        <div class="mt-12 text-center max-w-2xl mx-auto space-y-4">
+            <p class="text-gray-300 leading-relaxed">
+                At WebWings, we transform your visions into digital reality with passion and precision. 
+                We deeply value our customers and strive to deliver service that respects your time, 
+                ideas, and trust in every project we undertake.
+            </p>
+            <a href="https://www.instagram.com/webwings26?igsh=Z2NlbXU5Y2RiOGVq" target="_blank" class="inline-block mt-4 text-blue-400 font-bold hover:text-white transition">
+                <i class="fab fa-instagram mr-2"></i> Follow us on Instagram
+            </a>
+        </div>
+    </main>
+</body>
+</html>

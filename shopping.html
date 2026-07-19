@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping | WebWings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center py-4 px-10 bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50">
+        <a href="index.html" class="flex items-center space-x-3">
+            <img src="logo.png" alt="WebWings Logo" class="h-10 w-10 rounded-full object-cover">
+            <span class="text-2xl font-bold">WebWings</span>
+        </a>
+       <div class="space-x-6 font-medium text-gray-300">
+    <a href="index.html" class="hover:text-white">Home</a>
+    <a href="service.html" class="hover:text-white">Services</a>
+    <a href="portfolio.html" class="hover:text-white">Portfolio</a>
+    <a href="shopping.html" class="hover:text-white text-blue-400">Shopping</a>
+    <a href="contact.html" class="hover:text-white">Contact</a>
+</div>
+    </nav>
+
+    <!-- Coming Soon Section -->
+    <main class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+        <div class="bg-gray-800/50 p-12 rounded-3xl border border-blue-500/30 shadow-2xl max-w-2xl w-full">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-blue-400 mb-6">Coming Soon!</h2>
+            <p class="text-xl text-gray-300 mb-10">
+                We are launching our exclusive collection of customized products very soon. Our upcoming range includes:
+            </p>
+            
+            <!-- Products Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 text-gray-400 font-medium">
+                <span class="bg-gray-900 p-3 rounded-lg">Mobile Covers</span>
+                <span class="bg-gray-900 p-3 rounded-lg">Coffee Mugs</span>
+                <span class="bg-gray-900 p-3 rounded-lg">Custom Bags</span>
+                <span class="bg-gray-900 p-3 rounded-lg">Gift Items</span>
+                <span class="bg-gray-900 p-3 rounded-lg">Jewellery</span>
+            </div>
+
+            <p class="text-lg text-white font-semibold">Thank you for your patience and interest in WebWings!</p>
+        </div>
+    </main>
+
+</body>
+</html>
