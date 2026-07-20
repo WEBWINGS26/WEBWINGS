@@ -5,29 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping | WebWings</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
     </style>
 </head>
 <body class="text-white">
 
-    <!-- Navbar -->
-    <nav class="flex justify-between items-center py-4 px-10 bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50">
-        <a href="index.html" class="flex items-center space-x-3">
-            <img src="logo.png" alt="WebWings Logo" class="h-10 w-10 rounded-full object-cover">
-            <span class="text-2xl font-bold">WebWings</span>
-        </a>
-       <div class="space-x-6 font-medium text-gray-300">
-    <a href="index.html" class="hover:text-white">Home</a>
-    <a href="service.html" class="hover:text-white">Services</a>
-    <a href="portfolio.html" class="hover:text-white">Portfolio</a>
-    <a href="shopping.html" class="hover:text-white text-blue-400">Shopping</a>
-    <a href="contact.html" class="hover:text-white">Contact</a>
-</div>
+    <!-- Navbar with Hamburger Menu -->
+    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="logo.png" alt="WebWings Logo" class="h-8 w-8 rounded-full object-cover">
+                <span class="text-xl font-bold">WebWings</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6 font-medium text-gray-300">
+                <a href="index.html" class="hover:text-white">Home</a>
+                <a href="service.html" class="hover:text-white">Services</a>
+                <a href="portfolio.html" class="hover:text-white">Portfolio</a>
+                <a href="shopping.html" class="hover:text-white text-blue-400">Shopping</a>
+                <a href="contact.html" class="hover:text-white">Contact</a>
+            </div>
+
+            <!-- Hamburger Icon (Mobile) -->
+            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-800 rounded-xl p-4 flex flex-col space-y-3 text-center">
+            <a href="index.html" class="block py-2 hover:bg-blue-600 rounded">Home</a>
+            <a href="service.html" class="block py-2 hover:bg-blue-600 rounded">Services</a>
+            <a href="portfolio.html" class="block py-2 hover:bg-blue-600 rounded">Portfolio</a>
+            <a href="shopping.html" class="block py-2 bg-blue-600 rounded">Shopping</a>
+            <a href="contact.html" class="block py-2 hover:bg-blue-600 rounded">Contact</a>
+        </div>
     </nav>
 
     <!-- Coming Soon Section -->
-    <main class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <main class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 pb-12">
         <div class="bg-gray-800/50 p-12 rounded-3xl border border-blue-500/30 shadow-2xl max-w-2xl w-full">
             <h2 class="text-5xl md:text-6xl font-extrabold text-blue-400 mb-6">Coming Soon!</h2>
             <p class="text-xl text-gray-300 mb-10">
@@ -47,5 +67,12 @@
         </div>
     </main>
 
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 </body>
 </html>
