@@ -24,8 +24,8 @@
             cursor: pointer;
         }
 
-        /* শুধু পোস্টার গ্যালারির জন্য ছোট ও পাশাপাশি গ্রিড স্টাইল */
-        .poster-grid-img {
+        /* পোস্টার এবং লোগোর জন্য ছোট ও পাশাপাশি গ্রিড স্টাইল */
+        .grid-img {
             width: 100%;
             height: 140px;
             object-fit: contain;
@@ -33,6 +33,33 @@
             border-radius: 8px;
             border: 1px solid #374151;
             cursor: pointer;
+        }
+
+        /* সোয়াইপ বা স্লাইডার স্টাইল */
+        .slider-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.96);
+            z-index: 150;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 20px;
+        }
+        .slide-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -139,28 +166,29 @@
         </div>
     </div>
 
-    <!-- Poster Gallery (Grid Layout with Smaller Images) -->
+    <!-- Poster Gallery (Grid Layout) -->
     <div id="poster-gallery" class="lightbox">
         <button onclick="closeGallery('poster-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-3xl mx-auto pb-12">
-            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
-            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="grid-img">
         </div>
     </div>
 
+    <!-- Logo Gallery (Grid Layout - Updated) -->
     <div id="logo-gallery" class="lightbox">
         <button onclick="closeGallery('logo-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
-            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-3xl mx-auto pb-12">
+            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="grid-img">
+            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="grid-img">
         </div>
     </div>
 
@@ -173,9 +201,12 @@
         </div>
     </div>
 
-    <div id="zoom-view" class="zoom-view">
-        <button onclick="closeZoom()" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <img id="zoom-img" class="max-w-[90%] max-h-[85%] border-4 border-gray-700 rounded-lg">
+    <!-- Swipeable Zoom View (আঙুল দিয়ে ডানে-বামে সরিয়ে ছবি পাল্টানোর জন্য) -->
+    <div id="zoom-view" class="slider-container" style="display: none;">
+        <button onclick="closeZoom()" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
+        <div id="slider-wrapper" class="flex w-full h-full overflow-x-auto snap-x snap-mandatory items-center">
+            <!-- Dynamic Slides Will Load Here -->
+        </div>
     </div>
 
     <script>
@@ -187,8 +218,36 @@
 
         function openGallery(id) { document.getElementById(id).style.display = 'flex'; }
         function closeGallery(id) { document.getElementById(id).style.display = 'none'; }
-        function zoomImage(src) { document.getElementById('zoom-img').src = src; document.getElementById('zoom-view').style.display = 'flex'; }
-        function closeZoom() { document.getElementById('zoom-view').style.display = 'none'; }
+
+        // সোয়াইপ ফিচারের মাধ্যমে জুহ ভিউ ওপেন করার ফাংশন
+        function zoomImage(src) {
+            const zoomView = document.getElementById('zoom-view');
+            const wrapper = document.getElementById('slider-wrapper');
+            wrapper.innerHTML = '';
+
+            // যে গ্যালারির ওপর ক্লিক করা হয়েছে, সেই গ্যালারির সব ছবি কালেক্ট করা
+            let activeLightbox = event.target.closest('.lightbox');
+            let images = activeLightbox.querySelectorAll('img');
+            let targetIndex = 0;
+
+            images.forEach((img, index) => {
+                if (img.src === src) targetIndex = index;
+                let slide = document.createElement('div');
+                slide.className = 'slide-item';
+                slide.innerHTML = `<img src="${img.src}" class="max-w-[90%] max-h-[85%] object-contain border-4 border-gray-700 rounded-lg shadow-2xl">`;
+                wrapper.appendChild(slide);
+            });
+
+            zoomView.style.display = 'flex';
+            // নির্দিষ্ট ছবিতে স্ক্রোল করে ফোকাস করা
+            setTimeout(() => {
+                wrapper.children[targetIndex].scrollIntoView({ behavior: 'instant', inline: 'center' });
+            }, 50);
+        }
+
+        function closeZoom() { 
+            document.getElementById('zoom-view').style.display = 'none'; 
+        }
     </script>
 </body>
 </html>
