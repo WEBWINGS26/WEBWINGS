@@ -10,7 +10,7 @@
         body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 100; overflow-y: auto; justify-content: flex-start; align-items: center; padding: 70px 15px 40px 15px; }
         .zoom-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 200; justify-content: center; align-items: center; }
-        /* মোবাইলে ছবি ছোট ও নিখুঁত রাখার জন্য কাস্টম স্টাইল */
+        
         .gallery-img {
             max-width: 280px;
             max-height: 100px;
@@ -21,6 +21,17 @@
             border-radius: 12px;
             border: 1px solid #374151;
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        /* শুধু পোস্টার গ্যালারির জন্য ছোট ও পাশাপাশি গ্রিড স্টাইল */
+        .poster-grid-img {
+            width: 100%;
+            height: 140px;
+            object-fit: contain;
+            background: black;
+            border-radius: 8px;
+            border: 1px solid #374151;
             cursor: pointer;
         }
     </style>
@@ -118,7 +129,7 @@
         </section>
     </main>
 
-    <!-- Gallery Lightboxes (Fixed Small Sizes via CSS) -->
+    <!-- Gallery Lightboxes -->
     <div id="web-gallery" class="lightbox">
         <button onclick="closeGallery('web-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
         <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
@@ -128,16 +139,17 @@
         </div>
     </div>
 
+    <!-- Poster Gallery (Grid Layout with Smaller Images) -->
     <div id="poster-gallery" class="lightbox">
         <button onclick="closeGallery('poster-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
-            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="gallery-img">
-            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-3xl mx-auto pb-12">
+            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
+            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="poster-grid-img">
         </div>
     </div>
 
