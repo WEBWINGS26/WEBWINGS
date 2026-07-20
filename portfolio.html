@@ -10,6 +10,19 @@
         body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
         .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 100; overflow-y: auto; justify-content: flex-start; align-items: center; padding: 70px 15px 40px 15px; }
         .zoom-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 200; justify-content: center; align-items: center; }
+        /* মোবাইলে ছবি ছোট ও নিখুঁত রাখার জন্য কাস্টম স্টাইল */
+        .gallery-img {
+            max-width: 280px;
+            max-height: 380px;
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            background: black;
+            border-radius: 12px;
+            border: 1px solid #374151;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="text-white">
@@ -105,46 +118,46 @@
         </section>
     </main>
 
-    <!-- Gallery Lightboxes (Reduced Sizes) -->
+    <!-- Gallery Lightboxes (Fixed Small Sizes via CSS) -->
     <div id="web-gallery" class="lightbox">
         <button onclick="closeGallery('web-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full max-w-xs mx-auto pb-12">
-            <img src="raunaq-media.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="raunaq-book.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="raunaq-event.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
+        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
+            <img src="raunaq-media.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="raunaq-book.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="raunaq-event.jpg" onclick="zoomImage(this.src)" class="gallery-img">
         </div>
     </div>
 
     <div id="poster-gallery" class="lightbox">
         <button onclick="closeGallery('poster-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full max-w-xs mx-auto pb-12">
-            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
+        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
+            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="gallery-img">
         </div>
     </div>
 
     <div id="logo-gallery" class="lightbox">
         <button onclick="closeGallery('logo-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full max-w-xs mx-auto pb-12">
-            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
+        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
+            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="gallery-img">
         </div>
     </div>
 
     <div id="review-gallery" class="lightbox">
         <button onclick="closeGallery('review-gallery')" class="fixed top-4 right-4 text-3xl text-white hover:text-red-500 z-50 bg-black/80 w-10 h-10 rounded-full flex items-center justify-center">&times;</button>
-        <div class="flex flex-col items-center space-y-6 w-full max-w-xs mx-auto pb-12">
-            <img src="review-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="review-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
-            <img src="review-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer w-full rounded-xl shadow-2xl border border-gray-700 bg-black">
+        <div class="flex flex-col items-center space-y-6 w-full mx-auto pb-12">
+            <img src="review-1.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="review-2.jpg" onclick="zoomImage(this.src)" class="gallery-img">
+            <img src="review-3.jpg" onclick="zoomImage(this.src)" class="gallery-img">
         </div>
     </div>
 
