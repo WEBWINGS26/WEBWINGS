@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
-        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; overflow-y: auto; justify-content: center; }
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100; overflow-y: auto; justify-content: center; align-items: center; padding: 20px; }
         .zoom-view { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 200; justify-content: center; align-items: center; }
     </style>
 </head>
@@ -106,51 +106,51 @@
     </main>
 
     <!-- Gallery Lightboxes -->
-    <div id="web-gallery" class="lightbox flex-col">
-        <button onclick="closeGallery('web-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-10 mt-10">
-            <img src="raunaq-media.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black hover:scale-105">
-            <img src="raunaq-book.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black hover:scale-105">
-            <img src="raunaq-event.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black hover:scale-105">
+    <div id="web-gallery" class="lightbox">
+        <button onclick="closeGallery('web-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500 z-50">&times;</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 mt-16 max-w-5xl w-full">
+            <img src="raunaq-media.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="raunaq-book.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="raunaq-event.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
         </div>
     </div>
 
-    <div id="poster-gallery" class="lightbox flex-col">
-        <button onclick="closeGallery('poster-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-10 mt-10">
-            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
+    <div id="poster-gallery" class="lightbox">
+        <button onclick="closeGallery('poster-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500 z-50">&times;</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 mt-16 max-w-5xl w-full">
+            <img src="poster-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-6.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="poster-7.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
         </div>
     </div>
 
-    <div id="logo-gallery" class="lightbox flex-col">
-        <button onclick="closeGallery('logo-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-10 mt-10">
-            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
+    <div id="logo-gallery" class="lightbox">
+        <button onclick="closeGallery('logo-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500 z-50">&times;</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 mt-16 max-w-5xl w-full">
+            <img src="logo-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="logo-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="logo-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="logo-4.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="logo-5.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
         </div>
     </div>
 
-    <div id="review-gallery" class="lightbox flex-col">
-        <button onclick="closeGallery('review-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-10 mt-10">
-            <img src="review-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="review-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
-            <img src="review-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-56 p-2 object-contain bg-black">
+    <div id="review-gallery" class="lightbox">
+        <button onclick="closeGallery('review-gallery')" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500 z-50">&times;</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 mt-16 max-w-5xl w-full">
+            <img src="review-1.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="review-2.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
+            <img src="review-3.jpg" onclick="zoomImage(this.src)" class="cursor-pointer border border-gray-600 w-full h-auto max-h-[70vh] object-contain bg-black rounded-lg hover:scale-105 transition-transform">
         </div>
     </div>
 
     <div id="zoom-view" class="zoom-view">
         <button onclick="closeZoom()" class="absolute top-5 right-10 text-5xl text-white hover:text-red-500">&times;</button>
-        <img id="zoom-img" class="max-w-[80%] max-h-[80%] border-4 border-gray-700">
+        <img id="zoom-img" class="max-w-[90%] max-h-[85%] border-4 border-gray-700 rounded-lg">
     </div>
 
     <script>
