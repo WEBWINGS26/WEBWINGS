@@ -3,96 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | WebWings</title>
+    <title>Contact Us | WebWings - Durga Puja Special</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
+        /* হোমপেজ ও অন্যান্য পেজের সাথে মিলিয়ে সেম দুর্গাপূজা ব্যাকগ্রাউন্ড ও প্রোপার অ্যাডজাস্টমেন্ট */
+        body {
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.75) 0%, rgba(153, 27, 27, 0.8) 40%, rgba(88, 28, 135, 0.85) 85%, rgba(49, 15, 99, 0.9) 100%),
+                        url('puja-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .puja-glow {
+            box-shadow: 0 0 40px rgba(253, 224, 71, 0.4);
+        }
+        .text-sharat-gold {
+            background: linear-gradient(to right, #fde047, #fef08a, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .puja-card {
+            background: rgba(45, 10, 45, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 224, 71, 0.35);
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="text-white">
+<body class="text-white font-sans">
 
-    <!-- Navbar with Hamburger Menu -->
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-6">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="logo.png" alt="Logo" class="h-8 w-8 rounded-full object-cover">
-                <span class="text-xl font-bold">WebWings</span>
+    <!-- Navbar Updated -->
+    <nav class="bg-gray-950/85 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-3 md:px-6 border-b border-amber-500/30">
+        <div class="w-full flex justify-between items-center">
+            <!-- Logo & Brand Name (Extreme Left aligned) -->
+            <a href="index.html" class="flex items-center space-x-2 pl-2">
+                <img src="logo.png" alt="Logo" class="h-9 w-9 rounded-full object-cover border-2 border-amber-400">
+                <span class="text-2xl font-bold tracking-tight text-white">WebWings</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 font-medium text-gray-300">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="service.html" class="hover:text-white">Services</a>
-                <a href="portfolio.html" class="hover:text-white">Portfolio</a>
-                <a href="shopping.html" class="hover:text-white">Shopping</a>
-                <a href="contact.html" class="hover:text-white text-blue-400">Contact</a>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-200 pr-4">
+                <a href="index.html" class="hover:text-amber-300">Home</a>
+                <a href="service.html" class="hover:text-amber-300">Services</a>
+                <a href="portfolio.html" class="hover:text-amber-300">Portfolio</a>
+                <a href="shopping.html" class="hover:text-amber-300">Shopping</a>
+                <a href="contact.html" class="hover:text-amber-300 text-amber-300 font-bold">Contact</a>
             </div>
 
             <!-- Hamburger Icon (Mobile) -->
-            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+            <button id="menu-btn" class="md:hidden text-amber-300 text-2xl focus:outline-none pr-3">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-800 rounded-xl p-4 flex flex-col space-y-3 text-center">
-            <a href="index.html" class="block py-2 hover:bg-blue-600 rounded">Home</a>
-            <a href="service.html" class="block py-2 hover:bg-blue-600 rounded">Services</a>
-            <a href="portfolio.html" class="block py-2 hover:bg-blue-600 rounded">Portfolio</a>
-            <a href="shopping.html" class="block py-2 hover:bg-blue-600 rounded">Shopping</a>
-            <a href="contact.html" class="block py-2 bg-blue-600 rounded">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-900 border border-amber-500/30 rounded-xl p-4 flex flex-col space-y-3 text-center relative z-50">
+            <a href="index.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Home</a>
+            <a href="service.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Services</a>
+            <a href="portfolio.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Portfolio</a>
+            <a href="shopping.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Shopping</a>
+            <a href="contact.html" class="block py-2 bg-amber-500 text-black font-bold rounded">Contact</a>
         </div>
     </nav>
 
-    <main class="pt-32 px-6 max-w-5xl mx-auto pb-20">
-        <h2 class="text-5xl font-bold text-center mb-12">Get In Touch</h2>
+    <main class="pt-32 px-6 max-w-5xl mx-auto pb-20 relative z-10">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-12 text-sharat-gold">Get In Touch</h2>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
             
             <!-- Contact Form -->
-            <form action="https://formspree.io/f/meeykryg" method="POST" class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 space-y-4">
-                <h3 class="text-2xl font-bold text-blue-400 mb-4">Start a Project</h3>
-                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none">
-                <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none">
-                <textarea name="message" placeholder="Project Details" rows="4" required class="w-full p-3 rounded-lg bg-gray-900 border border-gray-600 focus:border-blue-500 outline-none"></textarea>
-                <button type="submit" class="w-full bg-blue-600 py-3 rounded-lg font-bold hover:bg-blue-500 transition">Send Request</button>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="puja-card p-8 rounded-2xl space-y-4 puja-glow">
+                <h3 class="text-2xl font-bold text-amber-300 mb-4">Start a Project</h3>
+                <input type="text" name="name" placeholder="Your Name" required class="w-full p-3 rounded-lg bg-gray-950/80 border border-amber-500/30 focus:border-amber-400 outline-none text-white">
+                <input type="email" name="email" placeholder="Your Email" required class="w-full p-3 rounded-lg bg-gray-950/80 border border-amber-500/30 focus:border-amber-400 outline-none text-white">
+                <textarea name="message" placeholder="Project Details" rows="4" required class="w-full p-3 rounded-lg bg-gray-950/80 border border-amber-500/30 focus:border-amber-400 outline-none text-white"></textarea>
+                <button type="submit" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-3 rounded-lg font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg">Send Request</button>
             </form>
 
             <!-- Details Section -->
             <div class="space-y-6">
                 <!-- Info Section -->
-                <div class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 space-y-3">
-                    <p><i class="fas fa-envelope text-blue-400 mr-2"></i> webwings26@gmail.com</p>
-                    <p><i class="fas fa-phone text-blue-400 mr-2"></i> +91 86970 78330 / +91 98307 38860</p>
-                    <p><i class="fab fa-instagram text-blue-400 mr-2"></i> @webwings26</p>
+                <div class="puja-card p-6 rounded-2xl space-y-3 puja-glow">
+                    <p class="text-gray-200"><i class="fas fa-envelope text-amber-300 mr-2"></i> webwings26@gmail.com</p>
+                    <p class="text-gray-200"><i class="fas fa-phone text-amber-300 mr-2"></i> +91 86970 78330 / +91 98307 38860</p>
+                    <p class="text-gray-200"><i class="fab fa-instagram text-amber-300 mr-2"></i> @webwings26</p>
                 </div>
 
                 <!-- WhatsApp Section -->
-                <div class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 text-center">
-                    <h3 class="text-xl font-bold text-blue-400 mb-4">Chat with us</h3>
-                    <a href="https://wa.me/919830738860" target="_blank" class="text-6xl text-green-500 hover:scale-110 transition-transform block">
+                <div class="puja-card p-6 rounded-2xl text-center puja-glow">
+                    <h3 class="text-xl font-bold text-amber-300 mb-4">Chat with us</h3>
+                    <a href="https://wa.me/919830738860" target="_blank" class="text-6xl text-green-400 hover:scale-110 transition-transform block">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
                 
                 <!-- QR Section -->
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 text-center">
-                    <h3 class="text-xl font-bold text-blue-400 mb-4">Google Review</h3>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/7yz33Eb4VwA2Se7J8&color=1e3a8a" alt="QR" class="bg-white p-2 rounded-lg mx-auto">
+                <div class="puja-card p-8 rounded-2xl text-center puja-glow">
+                    <h3 class="text-xl font-bold text-amber-300 mb-4">Google Review</h3>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://maps.app.goo.gl/7yz33Eb4VwA2Se7J8&color=d97706" alt="QR" class="bg-white p-2 rounded-lg mx-auto">
                 </div>
             </div>
         </div>
 
         <!-- About Us & Social -->
-        <div class="mt-12 text-center max-w-2xl mx-auto space-y-4">
-            <p class="text-gray-300 leading-relaxed">
+        <div class="mt-12 text-center max-w-2xl mx-auto space-y-4 puja-card p-8 rounded-3xl puja-glow">
+            <p class="text-gray-200 leading-relaxed">
                 At WebWings, we transform your visions into digital reality with passion and precision. 
                 We deeply value our customers and strive to deliver service that respects your time, 
                 ideas, and trust in every project we undertake.
             </p>
-            <a href="https://www.instagram.com/webwings26?igsh=Z2NlbXU5Y2RiOGVq" target="_blank" class="inline-block mt-4 text-blue-400 font-bold hover:text-white transition">
+            <a href="https://www.instagram.com/webwings26?igsh=Z2NlbXU5Y2RiOGVq" target="_blank" class="inline-block mt-4 text-amber-300 font-bold hover:text-white transition">
                 <i class="fab fa-instagram mr-2"></i> Follow us on Instagram
             </a>
         </div>
