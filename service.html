@@ -3,148 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services | WebWings</title>
+    <title>Services | WebWings - Durga Puja Special</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
+        /* হোমপেজের সাথে মিলিয়ে সেম দুর্গাপূজা ব্যাকগ্রাউন্ড ও প্রোপার অ্যাডজাস্টমেন্ট */
+        body {
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.75) 0%, rgba(153, 27, 27, 0.8) 40%, rgba(88, 28, 135, 0.85) 85%, rgba(49, 15, 99, 0.9) 100%),
+                        url('puja-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .puja-glow {
+            box-shadow: 0 0 40px rgba(253, 224, 71, 0.4);
+        }
+        .text-sharat-gold {
+            background: linear-gradient(to right, #fde047, #fef08a, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .puja-card {
+            background: rgba(45, 10, 45, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 224, 71, 0.35);
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="text-white">
+<body class="text-white font-sans">
 
-    <!-- Navbar with Hamburger Menu -->
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-6">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="logo.png" alt="WebWings Logo" class="h-8 w-8 rounded-full object-cover">
-                <span class="text-xl font-bold">WebWings</span>
+    <!-- Navbar Updated -->
+    <nav class="bg-gray-950/85 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-3 md:px-6 border-b border-amber-500/30">
+        <div class="w-full flex justify-between items-center">
+            <!-- Logo & Brand Name (Extreme Left aligned) -->
+            <a href="index.html" class="flex items-center space-x-2 pl-2">
+                <img src="logo.png" alt="WebWings Logo" class="h-9 w-9 rounded-full object-cover border-2 border-amber-400">
+                <span class="text-2xl font-bold tracking-tight text-white">WebWings</span>
             </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 font-medium text-gray-300">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="service.html" class="hover:text-white text-blue-400">Services</a>
-                <a href="portfolio.html" class="hover:text-white">Portfolio</a>
-                <a href="shopping.html" class="hover:text-white">Shopping</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
+            <div class="hidden md:flex space-x-8 font-medium text-gray-200 pr-4">
+                <a href="index.html" class="hover:text-amber-300">Home</a>
+                <a href="service.html" class="hover:text-amber-300 text-amber-300 font-bold">Services</a>
+                <a href="portfolio.html" class="hover:text-amber-300">Portfolio</a>
+                <a href="shopping.html" class="hover:text-amber-300">Shopping</a>
+                <a href="contact.html" class="hover:text-amber-300">Contact</a>
             </div>
 
             <!-- Hamburger Icon (Mobile) -->
-            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+            <button id="menu-btn" class="md:hidden text-amber-300 text-2xl focus:outline-none pr-3">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-800 rounded-xl p-4 flex flex-col space-y-3 text-center">
-            <a href="index.html" class="block py-2 hover:bg-blue-600 rounded">Home</a>
-            <a href="service.html" class="block py-2 bg-blue-600 rounded">Services</a>
-            <a href="portfolio.html" class="block py-2 hover:bg-blue-600 rounded">Portfolio</a>
-            <a href="shopping.html" class="block py-2 hover:bg-blue-600 rounded">Shopping</a>
-            <a href="contact.html" class="block py-2 hover:bg-blue-600 rounded">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-900 border border-amber-500/30 rounded-xl p-4 flex flex-col space-y-3 text-center relative z-50">
+            <a href="index.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Home</a>
+            <a href="service.html" class="block py-2 bg-amber-500 text-black font-bold rounded">Services</a>
+            <a href="portfolio.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Portfolio</a>
+            <a href="shopping.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Shopping</a>
+            <a href="contact.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Contact</a>
         </div>
     </nav>
 
     <!-- Services Content -->
-    <main class="pt-32 px-6 max-w-6xl mx-auto pb-20">
-        <h2 class="text-5xl font-bold text-center mb-16">Our Professional Services</h2>
+    <main class="pt-32 px-6 max-w-6xl mx-auto pb-20 relative z-10">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-16 text-sharat-gold">Our Professional Services</h2>
         
         <!-- Services Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            <a href="#website-pricing" class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 block">
-                <h4 class="text-xl font-bold mb-3 text-blue-400">Web Development</h4>
-                <p class="text-gray-400 text-sm">Custom websites built with modern technologies.</p>
+            <a href="#website-pricing" class="puja-card p-6 rounded-2xl hover:border-amber-400 transition-all duration-300 transform hover:scale-105 block puja-glow">
+                <h4 class="text-xl font-bold mb-3 text-amber-300">Web Development</h4>
+                <p class="text-gray-300 text-sm">Custom websites built with modern technologies.</p>
             </a>
 
-            <a href="#app-pricing" class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 block">
-                <h4 class="text-xl font-bold mb-3 text-blue-400">App Development</h4>
-                <p class="text-gray-400 text-sm">High-quality mobile applications for your business.</p>
+            <a href="#app-pricing" class="puja-card p-6 rounded-2xl hover:border-amber-400 transition-all duration-300 transform hover:scale-105 block puja-glow">
+                <h4 class="text-xl font-bold mb-3 text-amber-300">App Development</h4>
+                <p class="text-gray-300 text-sm">High-quality mobile applications for your business.</p>
             </a>
 
-            <a href="#graphic-pricing" class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 block">
-                <h4 class="text-xl font-bold mb-3 text-blue-400">Graphic Design</h4>
-                <p class="text-gray-400 text-sm">Creative logos, banners, and marketing materials.</p>
+            <a href="#graphic-pricing" class="puja-card p-6 rounded-2xl hover:border-amber-400 transition-all duration-300 transform hover:scale-105 block puja-glow">
+                <h4 class="text-xl font-bold mb-3 text-amber-300">Graphic Design</h4>
+                <p class="text-gray-300 text-sm">Creative logos, banners, and marketing materials.</p>
             </a>
 
-            <a href="#social-pricing" class="bg-gray-800/50 p-6 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all duration-300 transform hover:scale-105 block">
-                <h4 class="text-xl font-bold mb-3 text-blue-400">Social Media Management</h4>
-                <p class="text-gray-400 text-sm">Professional handling, content creation, and growth strategy.</p>
+            <a href="#social-pricing" class="puja-card p-6 rounded-2xl hover:border-amber-400 transition-all duration-300 transform hover:scale-105 block puja-glow">
+                <h4 class="text-xl font-bold mb-3 text-amber-300">Social Media Management</h4>
+                <p class="text-gray-300 text-sm">Professional handling, content creation, and growth strategy.</p>
             </a>
         </div>
 
         <!-- Website Pricing -->
         <div id="website-pricing" class="text-center mt-10 mb-24">
-            <h3 class="text-3xl font-bold mb-12">Website Pricing Plans</h3>
+            <h3 class="text-3xl font-bold mb-12 text-sharat-gold">Website Pricing Plans</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Basic Website</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹3,999 - 5,999</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 1-3 Pages</li><li>✓ Mobile Responsive</li><li>✓ Simple Design</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹3,999 - 5,999</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 1-3 Pages</li><li>✓ Mobile Responsive</li><li>✓ Simple Design</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border-2 border-blue-500 transform scale-105">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-400">Standard Website</h3>
+                <div class="puja-card p-8 rounded-2xl border-2 border-amber-400 transform scale-105 puja-glow">
+                    <h3 class="text-2xl font-bold mb-2 text-amber-300">Standard Website</h3>
                     <p class="text-3xl font-bold text-white mb-6">₹6,000 - 10,000</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 4-6 Pages</li><li>✓ Better UI + Animation</li><li>✓ WhatsApp Integration</li></ul>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 4-6 Pages</li><li>✓ Better UI + Animation</li><li>✓ WhatsApp Integration</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Premium Website</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹18,000+</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 6+ Pages</li><li>✓ High Speed + SEO</li><li>✓ Extra Features</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹18,000+</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 6+ Pages</li><li>✓ High Speed + SEO</li><li>✓ Extra Features</li></ul>
                 </div>
             </div>
         </div>
 
         <!-- App Pricing -->
         <div id="app-pricing" class="text-center mt-20 mb-24">
-            <h3 class="text-3xl font-bold mb-12">App Development Pricing</h3>
+            <h3 class="text-3xl font-bold mb-12 text-sharat-gold">App Development Pricing</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700"><h3 class="text-2xl font-bold mb-2">Basic App</h3><p class="text-3xl font-bold text-blue-400 mb-6">₹15,000 - 25,000</p><ul class="text-gray-400 space-y-3"><li>✓ Android</li><li>✓ Basic Features</li></ul></div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border-2 border-blue-500 transform scale-105"><h3 class="text-2xl font-bold mb-2 text-blue-400">Standard App</h3><p class="text-3xl font-bold text-white mb-6">₹30,000 - 50,000</p><ul class="text-gray-400 space-y-3"><li>✓ Android & iOS</li><li>✓ API Integration</li></ul></div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700"><h3 class="text-2xl font-bold mb-2">Advanced App</h3><p class="text-3xl font-bold text-blue-400 mb-6">₹75,000+</p><ul class="text-gray-400 space-y-3"><li>✓ Full Features</li><li>✓ Admin Panel</li></ul></div>
+                <div class="puja-card p-8 rounded-2xl"><h3 class="text-2xl font-bold mb-2">Basic App</h3><p class="text-3xl font-bold text-amber-300 mb-6">₹15,000 - 25,000</p><ul class="text-gray-300 space-y-3"><li>✓ Android</li><li>✓ Basic Features</li></ul></div>
+                <div class="puja-card p-8 rounded-2xl border-2 border-amber-400 transform scale-105 puja-glow"><h3 class="text-2xl font-bold mb-2 text-amber-300">Standard App</h3><p class="text-3xl font-bold text-white mb-6">₹30,000 - 50,000</p><ul class="text-gray-300 space-y-3"><li>✓ Android & iOS</li><li>✓ API Integration</li></ul></div>
+                <div class="puja-card p-8 rounded-2xl"><h3 class="text-2xl font-bold mb-2">Advanced App</h3><p class="text-3xl font-bold text-amber-300 mb-6">₹75,000+</p><ul class="text-gray-300 space-y-3"><li>✓ Full Features</li><li>✓ Admin Panel</li></ul></div>
             </div>
         </div>
 
         <!-- Graphic Design Pricing -->
         <div id="graphic-pricing" class="text-center mt-20 mb-24">
-            <h3 class="text-3xl font-bold mb-12">Graphic Design Pricing</h3>
+            <h3 class="text-3xl font-bold mb-12 text-sharat-gold">Graphic Design Pricing</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Basic Design</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹149 - 499</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ Social Media Post</li><li>✓ Basic Flyer/Banner</li><li>✓ Quick Delivery</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹149 - 499</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ Social Media Post</li><li>✓ Basic Flyer/Banner</li><li>✓ Quick Delivery</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border-2 border-blue-500 transform scale-105">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-400">Standard Branding</h3>
+                <div class="puja-card p-8 rounded-2xl border-2 border-amber-400 transform scale-105 puja-glow">
+                    <h3 class="text-2xl font-bold mb-2 text-amber-300">Standard Branding</h3>
                     <p class="text-3xl font-bold text-white mb-6">₹500 - 1,500</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ Logo Design</li><li>✓ Business Card</li><li>✓ High Resolution File</li></ul>
+                    <ul class="text-gray-300 space-y-3"><li>✓ Logo Design</li><li>✓ Business Card</li><li>✓ High Resolution File</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Premium Identity</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹2,000+</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ Complete Brand Kit</li><li>✓ Unlimited Revisions</li><li>✓ Print Ready Source File</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹2,000+</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ Complete Brand Kit</li><li>✓ Unlimited Revisions</li><li>✓ Print Ready Source File</li></ul>
                 </div>
             </div>
         </div>
 
         <!-- Social Media Management Pricing -->
         <div id="social-pricing" class="text-center mt-20">
-            <h3 class="text-3xl font-bold mb-12">Social Media Management Pricing</h3>
+            <h3 class="text-3xl font-bold mb-12 text-sharat-gold">Social Media Management Pricing</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Basic</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹2,000 / month</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 10-12 Posts</li><li>✓ Basic Design</li><li>✓ Simple Caption</li><li>✓ No Boosting service</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹2,000 / month</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 10-12 Posts</li><li>✓ Basic Design</li><li>✓ Simple Caption</li><li>✓ No Boosting service</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border-2 border-blue-500 transform scale-105">
-                    <h3 class="text-2xl font-bold mb-2 text-blue-400">Standard</h3>
+                <div class="puja-card p-8 rounded-2xl border-2 border-amber-400 transform scale-105 puja-glow">
+                    <h3 class="text-2xl font-bold mb-2 text-amber-300">Standard</h3>
                     <p class="text-3xl font-bold text-white mb-6">₹3,500 / month</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 15-18 Posts</li><li>✓ 4-6 Reels</li><li>✓ Caption + Hashtag</li><li>✓ Basic boost setup</li></ul>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 15-18 Posts</li><li>✓ 4-6 Reels</li><li>✓ Caption + Hashtag</li><li>✓ Basic boost setup</li></ul>
                 </div>
-                <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700">
+                <div class="puja-card p-8 rounded-2xl">
                     <h3 class="text-2xl font-bold mb-2">Premium</h3>
-                    <p class="text-3xl font-bold text-blue-400 mb-6">₹5,000+ / month</p>
-                    <ul class="text-gray-400 space-y-3"><li>✓ 20+ Posts</li><li>✓ 15+ Reels</li><li>✓ Full Page Management</li><li>✓ Advanced ads + boost</li></ul>
+                    <p class="text-3xl font-bold text-amber-300 mb-6">₹5,000+ / month</p>
+                    <ul class="text-gray-300 space-y-3"><li>✓ 20+ Posts</li><li>✓ 15+ Reels</li><li>✓ Full Page Management</li><li>✓ Advanced ads + boost</li></ul>
                 </div>
             </div>
         </div>
