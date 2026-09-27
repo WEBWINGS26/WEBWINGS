@@ -3,69 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping | WebWings</title>
+    <title>Shopping - Durga Puja Special T-Shirts | WebWings</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%); min-height: 100vh; }
+        body {
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.75) 0%, rgba(153, 27, 27, 0.8) 40%, rgba(88, 28, 135, 0.85) 85%, rgba(49, 15, 99, 0.9) 100%),
+                        url('puja-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .puja-glow {
+            box-shadow: 0 0 40px rgba(253, 224, 71, 0.4);
+        }
+        .text-sharat-gold {
+            background: linear-gradient(to right, #fde047, #fef08a, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .puja-card {
+            background: rgba(45, 10, 45, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 224, 71, 0.35);
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
-<body class="text-white">
+<body class="text-white font-sans">
 
-    <!-- Navbar with Hamburger Menu -->
-    <nav class="bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-6">
-        <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <!-- Logo -->
-            <a href="index.html" class="flex items-center space-x-2">
-                <img src="logo.png" alt="WebWings Logo" class="h-8 w-8 rounded-full object-cover">
-                <span class="text-xl font-bold">WebWings</span>
+    <!-- Navbar with Cart & Mobile Menu -->
+    <nav class="bg-gray-950/85 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-3 md:px-6 border-b border-amber-500/30">
+        <div class="w-full flex justify-between items-center max-w-7xl mx-auto">
+            <!-- Logo & Brand Name -->
+            <a href="index.html" class="flex items-center space-x-2 pl-2">
+                <img src="logo.png" alt="Logo" class="h-9 w-9 rounded-full object-cover border-2 border-amber-400">
+                <span class="text-2xl font-bold tracking-tight text-white">WebWings</span>
             </a>
 
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 font-medium text-gray-300">
-                <a href="index.html" class="hover:text-white">Home</a>
-                <a href="service.html" class="hover:text-white">Services</a>
-                <a href="portfolio.html" class="hover:text-white">Portfolio</a>
-                <a href="shopping.html" class="hover:text-white text-blue-400">Shopping</a>
-                <a href="contact.html" class="hover:text-white">Contact</a>
+            <!-- Desktop Menu & Cart Icon -->
+            <div class="hidden md:flex items-center space-x-8 font-medium text-gray-200 pr-4">
+                <a href="index.html" class="hover:text-amber-300">Home</a>
+                <a href="service.html" class="hover:text-amber-300">Services</a>
+                <a href="portfolio.html" class="hover:text-amber-300">Portfolio</a>
+                <a href="shopping.html" class="hover:text-amber-300 text-amber-300 font-bold">Shopping</a>
+                <a href="contact.html" class="hover:text-amber-300">Contact</a>
+                
+                <!-- Cart Button -->
+                <button onclick="toggleCartModal()" class="relative bg-amber-500 hover:bg-amber-400 text-black px-4 py-2 rounded-full font-bold transition flex items-center space-x-2">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Cart</span>
+                    <span id="cart-count" class="bg-black text-amber-300 text-xs px-2 py-0.5 rounded-full">0</span>
+                </button>
             </div>
 
-            <!-- Hamburger Icon (Mobile) -->
-            <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
-                <i class="fas fa-bars"></i>
-            </button>
+            <!-- Mobile Right Icons -->
+            <div class="flex items-center space-x-3 md:hidden">
+                <button onclick="toggleCartModal()" class="relative bg-amber-500 text-black px-3 py-1.5 rounded-full font-bold text-sm flex items-center space-x-1">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count-mobile">0</span>
+                </button>
+                <button id="menu-btn" class="text-amber-300 text-2xl focus:outline-none pr-3">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-800 rounded-xl p-4 flex flex-col space-y-3 text-center">
-            <a href="index.html" class="block py-2 hover:bg-blue-600 rounded">Home</a>
-            <a href="service.html" class="block py-2 hover:bg-blue-600 rounded">Services</a>
-            <a href="portfolio.html" class="block py-2 hover:bg-blue-600 rounded">Portfolio</a>
-            <a href="shopping.html" class="block py-2 bg-blue-600 rounded">Shopping</a>
-            <a href="contact.html" class="block py-2 hover:bg-blue-600 rounded">Contact</a>
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-900 border border-amber-500/30 rounded-xl p-4 flex flex-col space-y-3 text-center relative z-50">
+            <a href="index.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Home</a>
+            <a href="service.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Services</a>
+            <a href="portfolio.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Portfolio</a>
+            <a href="shopping.html" class="block py-2 bg-amber-500 text-black font-bold rounded">Shopping</a>
+            <a href="contact.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Contact</a>
         </div>
     </nav>
 
-    <!-- Coming Soon Section -->
-    <main class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-24 pb-12">
-        <div class="bg-gray-800/50 p-12 rounded-3xl border border-blue-500/30 shadow-2xl max-w-2xl w-full">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-blue-400 mb-6">Coming Soon!</h2>
-            <p class="text-xl text-gray-300 mb-10">
-                We are launching our exclusive collection of customized products very soon. Our upcoming range includes:
-            </p>
+    <!-- Main Content -->
+    <main class="pt-32 px-6 max-w-6xl mx-auto pb-20 relative z-10">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center mb-4 text-sharat-gold">Durga Puja Special T-Shirts</h2>
+        <p class="text-center text-gray-200 mb-12 italic text-lg">"এই পূজায় আপনার স্টাইল হোক আরও জমকালো। প্রিমিয়াম কোয়ালিটির এক্সক্লুসিভ পুজো টি-শার্ট।"</p>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- Products Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-10 text-gray-400 font-medium">
-                <span class="bg-gray-900 p-3 rounded-lg">Mobile Covers</span>
-                <span class="bg-gray-900 p-3 rounded-lg">Coffee Mugs</span>
-                <span class="bg-gray-900 p-3 rounded-lg">Custom Bags</span>
-                <span class="bg-gray-900 p-3 rounded-lg">Gift Items</span>
-                <span class="bg-gray-900 p-3 rounded-lg">Jewellery</span>
+            <!-- Product 1: Debi Print T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-debi.jpg" alt="Debi Print T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Debi Print Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Debi Print )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Debi Print Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
             </div>
 
-            <p class="text-lg text-white font-semibold">Thank you for your patience and interest in WebWings!</p>
+            <!-- Product 2: Sarodiya Print T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-sarodiya.jpg" alt="Sarodiya Print T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Sarodiya Print Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Sarodiya Print )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Sarodiya Print Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 3: Durga Murti Special T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-durga-murti.jpg" alt="Durga Murti Special T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Durga Murti Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Durga Murti Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Durga Murti Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 4: Traditional Durga Art T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-traditional-durga.jpg" alt="Traditional Durga Art T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Traditional Durga Art T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Traditional Durga Art )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Traditional Durga Art T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 5: Divine Om & Devi Print T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-divine-om.jpg" alt="Divine Om & Devi Print T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Divine Om & Devi T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Divine Om & Devi Print )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Divine Om & Devi T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 6: Maa Special Print T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-maa.jpg" alt="Maa Special Print T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Maa Special Print T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Maa Special Print )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Maa Special Print T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 7: Bajlo Tomar Alor Benu T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-alor-benu.jpg" alt="Bajlo Tomar Alor Benu T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Alor Benu Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Bajlo Tomar Alor Benu )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Alor Benu Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 8: Chalchitra Devi Special T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-chalchitra.jpg" alt="Chalchitra Devi Special T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Chalchitra Devi T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Chalchitra Devi Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Chalchitra Devi T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 9: Abstract Durga Typography T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-abstract-durga.jpg" alt="Abstract Durga Typography T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Abstract Durga Typography T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Abstract Durga Typography )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Abstract Durga Typography T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 10: Pate Luchi Haate Dhunuchi T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-luchi-dhunuchi.jpg" alt="Pate Luchi Haate Dhunuchi T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Luchi & Dhunuchi T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Pate Luchi Haate Dhunuchi Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Luchi & Dhunuchi T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 11: Bolo Bolo Durga Elo T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-durga-elo.jpg" alt="Bolo Bolo Durga Elo T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Durga Elo Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Bolo Bolo Durga Elo Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Durga Elo Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 12: Thakur Thakbe Jotokkhon T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-thakur-thakbe.jpg" alt="Thakur Thakbe Jotokkhon T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Thakur Thakbe Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Thakur Thakbe Jotokkhon Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Thakur Thakbe Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
+            <!-- Product 13: Jagao Shakti Jagao Spardha T-Shirt -->
+            <div class="puja-card p-6 rounded-3xl puja-glow flex flex-col items-center text-center">
+                <div class="w-full h-64 bg-gray-950/60 rounded-2xl border border-amber-500/30 overflow-hidden mb-6 flex items-center justify-center p-2">
+                    <img src="tshirt-jagao-shakti.jpg" alt="Jagao Shakti Jagao Spardha T-Shirt" class="max-h-full max-w-full object-contain rounded-xl hover:scale-105 transition duration-300">
+                </div>
+                <h3 class="text-xl font-bold text-amber-300 mb-2">Jagao Shakti Special T-Shirt</h3>
+                <p class="text-gray-300 text-xs mb-4">Pure cotton t shirt ( Jagao Shakti Jagao Spardha Special )</p>
+                <div class="text-xl font-bold text-white mb-6">₹449</div>
+                <button onclick="addToCart('Jagao Shakti Special T-Shirt', 449)" class="w-full bg-gradient-to-r from-amber-400 to-amber-600 text-black py-2.5 rounded-xl font-bold hover:from-amber-500 hover:to-amber-700 transition shadow-lg flex items-center justify-center space-x-2 text-sm">
+                    <i class="fas fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                </button>
+            </div>
+
         </div>
     </main>
+
+    <!-- Cart Modal / Drawer -->
+    <div id="cart-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex justify-end">
+        <div class="bg-gray-900 border-l border-amber-500/30 w-full max-w-md h-full p-6 flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex justify-between items-center border-b border-gray-800 pb-4 mb-4">
+                    <h3 class="text-2xl font-bold text-amber-300"><i class="fas fa-shopping-cart mr-2"></i> Your Cart</h3>
+                    <button onclick="toggleCartModal()" class="text-2xl text-gray-400 hover:text-white">&times;</button>
+                </div>
+                <div id="cart-items" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                    <p class="text-gray-400 text-center py-10">Your cart is empty.</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-4 space-y-4">
+                <div class="flex justify-between text-xl font-bold">
+                    <span>Total Amount:</span>
+                    <span id="cart-total" class="text-amber-300">₹0</span>
+                </div>
+                <button onclick="proceedToCheckout()" class="w-full bg-green-600 hover:bg-green-500 text-white py-3.5 rounded-xl font-bold transition shadow-lg flex items-center justify-center space-x-2">
+                    <i class="fab fa-whatsapp text-xl"></i>
+                    <span>Proceed to Checkout</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         const menuBtn = document.getElementById('menu-btn');
@@ -73,6 +308,79 @@
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+
+        let cart = [];
+
+        function addToCart(name, price) {
+            let existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: name, price: price, quantity: 1 });
+            }
+            updateCartUI();
+            alert(name + ' added to cart successfully!');
+        }
+
+        function updateCartUI() {
+            let totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            let totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            document.getElementById('cart-count').textContent = totalCount;
+            document.getElementById('cart-count-mobile').textContent = totalCount;
+            document.getElementById('cart-total').textContent = '₹' + totalPrice;
+
+            let cartItemsContainer = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-400 text-center py-10">Your cart is empty.</p>';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartItemsContainer.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-800/60 p-3 rounded-xl border border-amber-500/20">
+                        <div>
+                            <h4 class="font-bold text-white text-sm">${item.name}</h4>
+                            <p class="text-amber-300 text-xs">₹${item.price} x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-500 text-sm">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            let modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            let totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let message = `Hello WebWings, I want to place an order for the following items:%0a%0a`;
+            
+            cart.forEach(item => {
+                message += `- ${item.name} (Qty: ${item.quantity}) - ₹${item.price * item.quantity}%0a`;
+            });
+
+            message += `%0a*Total Amount:* ₹${totalAmount}%0a%0a*(I will share my delivery address and payment screenshot now)*`;
+
+            let whatsappNumber = "919830738860";
+            let url = `https://wa.me/${whatsappNumber}?text=${message}`;
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
