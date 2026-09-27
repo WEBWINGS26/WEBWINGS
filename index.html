@@ -3,94 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebWings | Creative Tech Solutions</title>
+    <title>WebWings | Durga Puja Special</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* ব্যাকগ্রাউন্ড ইমেজ প্রপার অ্যাডজাস্টমেন্ট ও কালার ব্লেন্ডিং */
         body {
-            background: linear-gradient(135deg, #080c16 0%, #111827 50%, #1e3a8a 100%);
-            background-attachment: fixed;
+            background: linear-gradient(180deg, rgba(220, 38, 38, 0.75) 0%, rgba(153, 27, 27, 0.8) 40%, rgba(88, 28, 135, 0.85) 85%, rgba(49, 15, 99, 0.9) 100%),
+                        url('puja-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-blend-mode: overlay;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .puja-glow {
+            box-shadow: 0 0 40px rgba(253, 224, 71, 0.4);
+        }
+        .text-sharat-gold {
+            background: linear-gradient(to right, #fde047, #fef08a, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .puja-card {
+            background: rgba(45, 10, 45, 0.78);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(253, 224, 71, 0.35);
+            position: relative;
+            z-index: 1;
         }
     </style>
 </head>
 <body class="text-white font-sans">
 
 <!-- Navbar with Hamburger Menu -->
-<nav class="bg-gray-900/80 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-6">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-        <!-- Logo -->
-        <a href="index.html" class="flex items-center space-x-2">
-            <img src="logo.png" alt="WebWings Logo" class="h-8 w-8 rounded-full object-cover">
-            <span class="text-xl font-bold">WebWings</span>
+<nav class="bg-gray-950/85 backdrop-blur-md fixed w-full top-0 z-50 py-4 px-3 md:px-6 border-b border-amber-500/30">
+    <div class="w-full flex justify-between items-center">
+        <!-- Logo & Brand Name (Extreme Left aligned) -->
+        <a href="index.html" class="flex items-center space-x-2 pl-2">
+            <img src="logo.png" alt="WebWings Logo" class="h-9 w-9 rounded-full object-cover border-2 border-amber-400">
+            <span class="text-2xl font-bold tracking-tight text-white">WebWings</span>
         </a>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-6 font-medium text-gray-300">
-            <a href="index.html" class="hover:text-white text-blue-400">Home</a>
-            <a href="service.html" class="hover:text-white">Services</a>
-            <a href="portfolio.html" class="hover:text-white">Portfolio</a>
-            <a href="shopping.html" class="hover:text-white">Shopping</a>
-            <a href="contact.html" class="hover:text-white">Contact</a>
+        <div class="hidden md:flex space-x-8 font-medium text-gray-200 pr-4">
+            <a href="index.html" class="hover:text-amber-300 text-amber-300 font-bold">Home</a>
+            <a href="service.html" class="hover:text-amber-300">Services</a>
+            <a href="portfolio.html" class="hover:text-amber-300">Portfolio</a>
+            <a href="shopping.html" class="hover:text-amber-300">Shopping</a>
+            <a href="contact.html" class="hover:text-amber-300">Contact</a>
         </div>
 
         <!-- Hamburger Icon (Mobile) -->
-        <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+        <button id="menu-btn" class="md:hidden text-amber-300 text-2xl focus:outline-none pr-3">
             <i class="fas fa-bars"></i>
         </button>
     </div>
 
     <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-800 rounded-xl p-4 flex flex-col space-y-3 text-center">
-        <a href="index.html" class="block py-2 bg-blue-600 rounded">Home</a>
-        <a href="service.html" class="block py-2 hover:bg-blue-600 rounded">Services</a>
-        <a href="portfolio.html" class="block py-2 hover:bg-blue-600 rounded">Portfolio</a>
-        <a href="shopping.html" class="block py-2 hover:bg-blue-600 rounded">Shopping</a>
-        <a href="contact.html" class="block py-2 hover:bg-blue-600 rounded">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden mt-4 bg-gray-900 border border-amber-500/30 rounded-xl p-4 flex flex-col space-y-3 text-center relative z-50">
+        <a href="index.html" class="block py-2 bg-amber-500 text-black font-bold rounded">Home</a>
+        <a href="service.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Services</a>
+        <a href="portfolio.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Portfolio</a>
+        <a href="shopping.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Shopping</a>
+        <a href="contact.html" class="block py-2 hover:bg-amber-500 hover:text-black rounded">Contact</a>
     </div>
 </nav>
 
     <!-- Hero Section -->
-    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24">
-        
-        <!-- লোগো গোলাকার এবং প্রপার সাইজিং -->
-        <div class="mb-8">
-            <img src="logo.png" alt="WebWings Big Logo" class="h-32 w-32 md:h-48 md:w-48 rounded-full object-cover border-4 border-blue-500/30 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
+    <header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-32 pb-16 relative z-10">
+
+        <!-- Logo -->
+        <div class="mb-8 mt-4">
+            <img src="logo.png" alt="WebWings Big Logo" class="h-32 w-32 md:h-48 md:w-48 rounded-full object-cover border-4 border-amber-400/90 puja-glow">
         </div>
         
-        <!-- হেডলাইন রেসপন্সিভ করা হয়েছে -->
-        <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight text-white px-2">
-            Crafting Digital Excellence
+        <!-- হেডলাইন -->
+        <h2 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight text-white px-2 tracking-tight">
+            Let Your Brand Bloom <span class="text-sharat-gold">This Autumn</span>
         </h2>
         
-        <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-xl px-4">
-            We build professional websites, mobile apps, and stunning graphic designs to elevate your brand.
+        <!-- ট্যাগলাইন -->
+        <p class="text-lg md:text-2xl font-light text-amber-100/90 italic mb-6">
+            "শরতের আকাশ ও কাশফুলের ছোঁয়ায়, আপনার ব্যবসাকে পৌঁছে দিন সাফল্যের শিখরে।"
+        </p>
+
+        <p class="text-base md:text-lg text-gray-200 mb-8 max-w-xl px-4 leading-relaxed">
+            We build professional websites, mobile apps, and stunning graphic designs to elevate your brand this festive season.
         </p>
         
         <!-- Explore Our Work Link -->
-        <a href="portfolio.html" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold transition transform hover:scale-105">
+        <a href="portfolio.html" class="bg-gradient-to-r from-amber-400 to-amber-600 hover:from-amber-500 hover:to-amber-700 text-black px-8 py-3.5 rounded-full font-bold transition transform hover:scale-105 shadow-xl">
             Explore Our Work
         </a>
     </header>
 
 <!-- Why Choose Us Section -->
-<section class="py-20 px-6 max-w-6xl mx-auto">
-    <h3 class="text-4xl font-bold text-center mb-16 text-white">Why Choose Us?</h3>
+<section class="py-20 px-6 max-w-6xl mx-auto relative z-10">
+    <h3 class="text-4xl font-bold text-center mb-16 text-sharat-gold">Why Choose Us?</h3>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Card 1 -->
-        <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all">
-            <h4 class="text-xl font-bold text-blue-400 mb-4">Quality & Precision</h4>
-            <p class="text-gray-400">We prioritize pixel-perfect designs and clean code to ensure your brand stands out with professional excellence.</p>
+        <div class="puja-card p-8 rounded-2xl hover:border-amber-400 transition-all puja-glow">
+            <h4 class="text-xl font-bold text-amber-300 mb-4">Quality & Precision</h4>
+            <p class="text-gray-300">We prioritize pixel-perfect designs and clean code to ensure your brand stands out with professional excellence.</p>
         </div>
         <!-- Card 2 -->
-        <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all">
-            <h4 class="text-xl font-bold text-blue-400 mb-4">Customer Respect</h4>
-            <p class="text-gray-400">Your ideas and feedback are at the heart of our process. We value your trust and time above all else.</p>
+        <div class="puja-card p-8 rounded-2xl hover:border-amber-400 transition-all puja-glow">
+            <h4 class="text-xl font-bold text-amber-300 mb-4">Customer Respect</h4>
+            <p class="text-gray-300">Your ideas and feedback are at the heart of our process. We value your trust and time above all else.</p>
         </div>
         <!-- Card 3 -->
-        <div class="bg-gray-800/50 p-8 rounded-2xl border border-gray-700 hover:border-blue-500 transition-all">
-            <h4 class="text-xl font-bold text-blue-400 mb-4">Reliable Support</h4>
-            <p class="text-gray-400">We don't just deliver; we support. Our team ensures that your digital presence remains seamless and up-to-date.</p>
+        <div class="puja-card p-8 rounded-2xl hover:border-amber-400 transition-all puja-glow">
+            <h4 class="text-xl font-bold text-amber-300 mb-3">Reliable Support</h4>
+            <p class="text-gray-300">We don't just deliver; we support. Our team ensures that your digital presence remains seamless and up-to-date.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Google Review Section -->
+<section class="py-16 px-6 text-center relative z-10">
+    <div class="puja-card p-8 rounded-3xl max-w-xl mx-auto space-y-4 puja-glow">
+        <div class="text-amber-300 text-2xl space-x-1">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-white">Love our work? Rate us on Google!</h3>
+        <p class="text-gray-200 text-sm">শরতের এই শুভলগ্নে আপনার একটু পজিটিভ রিভিউ আমাদের কাজের উৎসাহ দ্বিগুণ করে দেবে।</p>
+        <div class="pt-2">
+            <a href="https://maps.app.goo.gl/7yz33Eb4VwA2Se7J8" target="_blank" class="inline-block bg-amber-400 hover:bg-amber-300 text-black font-bold py-3 px-8 rounded-xl transition shadow-lg">
+                <i class="fas fa-star mr-2"></i> Leave a Review
+            </a>
         </div>
     </div>
 </section>
