@@ -672,17 +672,19 @@ footer a:hover{color:var(--cyan)}
   }
 })();
 </script>
-<script type="module">
-  import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
-
-  Typebot.initBubble({
-    typebot: "my-typebot-niks2j1",
-    theme: {
-      button: { backgroundColor: "#1D1D1D" },
-      chatWindow: { backgroundColor: "#F8F8F8" },
-    },
+<!-- Typebot Iframe Bubble Start -->
+<div id="typebot-iframe-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 999999;">
+  <button id="typebot-toggle-btn" style="background-color: #1D1D1D; color: white; border: none; border-radius: 50px; width: 60px; height: 60px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 24px;">💬</button>
+  <div id="typebot-window" style="display: none; position: absolute; bottom: 75px; right: 0; width: 400px; height: 600px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); overflow: hidden;">
+    <iframe src="https://typebot.co/my-typebot-niks2j1" style="width: 100%; height: 100%; border: none;"></iframe>
+  </div>
+</div>
+<script>
+  document.getElementById('typebot-toggle-btn').addEventListener('click', function() {
+    var win = document.getElementById('typebot-window');
+    win.style.display = win.style.display === 'none' ? 'block' : 'none';
   });
 </script>
-
+<!-- Typebot Iframe Bubble End -->
 </body>
 </html>
