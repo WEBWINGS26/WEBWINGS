@@ -672,10 +672,10 @@ footer a:hover{color:var(--cyan)}
   }
 })();
 </script>
-<!-- Typebot Custom Bubble Start (Positioned Higher on Bottom-Right) -->
-<div id="typebot-iframe-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 999999;">
-  <button id="typebot-toggle-btn" style="background-color: #1D1D1D; color: white; border: none; border-radius: 50px; width: 60px; height: 60px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 24px;">💬</button>
-  <div id="typebot-window" style="display: none; position: absolute; bottom: 75px; right: 0; width: 400px; height: 600px; background: white; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.2); overflow: hidden;">
+<!-- Typebot Fully Responsive Custom Bubble Start -->
+<div id="typebot-iframe-container" style="position: fixed; bottom: 85px; right: 15px; z-index: 999999;">
+  <button id="typebot-toggle-btn" style="background-color: #1D1D1D; color: white; border: none; border-radius: 50px; width: 55px; height: 55px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); font-size: 22px;">💬</button>
+  <div id="typebot-window" style="display: none; position: fixed; bottom: 80px; right: 15px; width: 90vw; max-width: 380px; height: 75vh; max-height: 550px; background: white; border-radius: 16px; box-shadow: 0 5px 25px rgba(0,0,0,0.25); overflow: hidden;">
     <iframe src="https://typebot.co/my-typebot-niks2j1" style="width: 100%; height: 100%; border: none;"></iframe>
   </div>
 </div>
@@ -685,6 +685,14 @@ footer a:hover{color:var(--cyan)}
     win.style.display = win.style.display === 'none' ? 'block' : 'none';
   });
 </script>
-<!-- Typebot Custom Bubble End -->
+<!-- Typebot Fully Responsive Custom Bubble End -->
+
+<!-- Fix Mobile Horizontal Overflow Style -->
+<style>
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden !important;
+  }
+</style>
 </body>
 </html>
