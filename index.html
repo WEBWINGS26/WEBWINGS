@@ -672,6 +672,7 @@ footer a:hover{color:var(--cyan)}
   }
 })();
 </script>
+<!-- Typebot Bubble Start (Bottom-Left Positioned) -->
 <script type="module">
   import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js'
 
@@ -681,6 +682,10 @@ footer a:hover{color:var(--cyan)}
       button: { backgroundColor: "#1D1D1D" },
       chatWindow: { backgroundColor: "#F8F8F8" },
     },
+    // Position the chat bubble on the bottom-left to avoid the WhatsApp button on the bottom-right
+    previewMessage: { maxWidth: 300 },
+    position: "left",
   });
-</script></body>
+</script>
+<!-- Typebot Bubble End --></body>
 </html>
